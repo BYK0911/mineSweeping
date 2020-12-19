@@ -9,15 +9,16 @@ const MineSweep = {
 
   load () {
     const canvas = document.createElement('canvas')
-    const ctx = canvas.getContext('2d')
     const width = window.innerWidth
     const height = window.innerHeight
-
+    
     canvas.width = width
     canvas.height = height
     canvas.style.width = width + 'px'
     canvas.style.height = height + 'px'
-
+    
+    hidpi(canvas)
+    const ctx = canvas.getContext('2d')
     this.canvas = canvas
     this.ctx = ctx
 
@@ -129,8 +130,8 @@ const MineSweep = {
   },
 
   render () {
-    const cw = this.canvas.width - 100
-    const ch = this.canvas.height -100
+    const cw = window.innerWidth - 100
+    const ch = window.innerHeight - 100
     const cols = this.cols
     const rows = this.rows
     const k = Math.min(cw / cols, ch / rows)
@@ -210,8 +211,8 @@ const MineSweep = {
     this.status = -1
     this.end()
     
-    const cw = this.canvas.width
-    const ch = this.canvas.height
+    const cw = window.innerWidth
+    const ch = window.innerHeight
     const text = win ? 'You Win!' : 'You Lose'
 
     this.ctx.fillStyle = 'rgba(200, 200, 200, .6)'
@@ -261,8 +262,8 @@ const MineSweep = {
   resolveEventCoord (e) {
     const ex = e.offsetX
     const ey = e.offsetY
-    const cw = this.canvas.width - 100
-    const ch = this.canvas.height - 100
+    const cw = window.innerWidth - 100
+    const ch = window.innerHeight - 100
     const cols = this.cols
     const rows = this.rows
     const k = Math.min(cw / cols, ch / rows)
