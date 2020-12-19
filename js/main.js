@@ -246,7 +246,6 @@ const MineSweep = {
     }
 
     const { r, c } = this.resolveEventCoord(e)
-    console.log(r, c)
     if (r < 0 || r > this.rows - 1 || c < 0 || c > this.cols - 1) return
 
     if (this.status === 0) {
@@ -255,7 +254,6 @@ const MineSweep = {
       this.sweep(r, c)
     } else {
       const v = this.map[r][c]
-      console.log('check',v)
       if (v === 9) this.gameover()
       else if (v >= 0) this.sweep(r, c)
     }
